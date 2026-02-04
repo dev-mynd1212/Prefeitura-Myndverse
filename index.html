@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyndVerse | Soluções Institucionais Premium para Prefeituras</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 60px 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 70px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: -1px;
+        }
+
+        header .tagline {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        header .mission {
+            font-size: 1.2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            line-height: 1.8;
+            background: rgba(255,255,255,0.15);
+            padding: 25px 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .highlight {
+            background: rgba(255,255,255,0.25);
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Infrastructure Section */
+        .infrastructure {
+            background: white;
+            border-radius: 25px;
+            padding: 60px;
+            margin-bottom: 50px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+        }
+
+        .infrastructure h2 {
+            font-size: 2.8rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .infrastructure .subtitle {
+            text-align: center;
+            color: #718096;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+
+        .infrastructure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .infrastructure-item {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            padding: 35px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .infrastructure-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .infrastructure-item h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .infrastructure-item .icon {
+            font-size: 1.8rem;
+        }
+
+        .infrastructure-item p {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .infrastructure-item ul {
+            margin-top: 15px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .infrastructure-item li {
+            color: #2d3748;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .infrastructure-item li::before {
+            content: '?';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Avatar Section */
+        .avatar-section {
+            background: linear-gradient(135deg, #1a202c, #2d3748);
+            border-radius: 25px;
+            padding: 60px;
+            margin-bottom: 50px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+        }
+
+        .avatar-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .avatar-section .subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            position: relative;
+        }
+
+        .avatar-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .avatar-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .avatar-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #a0d8f1;
+        }
+
+        .avatar-card p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            opacity: 0.95;
+        }
+
+        .avatar-card .examples {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .avatar-card .examples h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #ffd700;
+        }
+
+        .avatar-card .examples ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .avatar-card .examples li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            opacity: 0.9;
+        }
+
+        .avatar-card .examples li::before {
+            content: '?';
+            position: absolute;
+            left: 0;
+            color: #a0d8f1;
+        }
+
+        /* Proposals Grid */
+        .proposals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 45px;
+            margin-bottom: 60px;
+        }
+
+        .proposal-card {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proposal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .proposal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 90px rgba(0,0,0,0.4);
+        }
+
+        .proposal-header {
+            margin-bottom: 35px;
+        }
+
+        .proposal-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .proposal-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .proposal-subtitle {
+            font-size: 1.1rem;
+            color: #718096;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ideal-for {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .ideal-for h4 {
+            color: #667eea;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .ideal-for ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .ideal-for li {
+            padding: 8px 0;
+            color: #1e40af;
+            position: relative;
+            padding-left: 30px;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .ideal-for li::before {
+            content: '?';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .section-divider {
+            margin: 35px 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+        }
+
+        .content-section {
+            margin: 30px 0;
+        }
+
+        .content-section h4 {
+            color: #2d3748;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-section h4::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .features-list li {
+            padding: 15px 0;
+            color: #4a5568;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            padding-left: 40px;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: '??';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .features-list li strong {
+            color: #2d3748;
+        }
+
+        .video-examples {
+            background: #fef3c7;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .video-examples h5 {
+            color: #92400e;
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .video-examples ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .video-examples li {
+            padding: 10px 0;
+            color: #78350f;
+            position: relative;
+            padding-left: 30px;
+            font-size: 1.02rem;
+            line-height: 1.6;
+        }
+
+        .video-examples li::before {
+            content: '??';
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid #10b981;
+        }
+
+        .highlight-box h5 {
+            color: #065f46;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .highlight-box p {
+            color: #047857;
+            line-height: 1.7;
+            font-size: 1.02rem;
+        }
+
+        .tech-specs {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 2px solid #e2e8f0;
+        }
+
+        .tech-specs h5 {
+            color: #1e293b;
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .tech-specs ul {
+            list-style: none;
+            padding-left: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .tech-specs li {
+            padding: 10px 15px;
+            background: white;
+            border-radius: 8px;
+            color: #475569;
+            font-size: 0.95rem;
+            border-left: 3px solid #667eea;
+        }
+
+        .cta-section {
+            background: white;
+            border-radius: 25px;
+            padding: 60px;
+            text-align: center;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+            margin-bottom: 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 25px;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            color: #4a5568;
+            margin-bottom: 35px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-section .quote {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #667eea;
+            font-style: italic;
+            margin: 30px 0;
+        }
+
+        .political-year {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 5px solid #ef4444;
+        }
+
+        .political-year h3 {
+            color: #991b1b;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .political-year p {
+            color: #7f1d1d;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        @media (max-width: 1200px) {
+            .proposals-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header .tagline {
+                font-size: 1.2rem;
+            }
+
+            .proposal-card,
+            .infrastructure,
+            .avatar-section,
+            .cta-section {
+                padding: 35px;
+            }
+
+            .proposal-title {
+                font-size: 1.8rem;
+            }
+
+            .infrastructure-grid,
+            .avatar-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>??? MyndVerse</h1>
+            <p class="tagline">Soluções Institucionais de Alta Performance para <span class="highlight">Prefeituras que Lideram o Futuro</span></p>
+            <div class="mission">
+                <strong>Nossa missão:</strong> Não vendemos marketing nem sites genéricos. Entregamos <span class="highlight">credibilidade pública, organização institucional e posicionamento digital seguro</span>, construídos com tecnologia de ponta, expertise em comunicação governamental e infraestrutura profissional completa.
+            </div>
+        </header>
+
+        <!-- Infrastructure Section -->
+        <div class="infrastructure">
+            <h2>?? Nossa Infraestrutura Premium</h2>
+            <p class="subtitle">Equipamentos, tecnologia e expertise que fazem a diferença</p>
+            
+            <div class="infrastructure-grid">
+                <div class="infrastructure-item">
+                    <h3><span class="icon">??</span> Produção Audiovisual Profissional</h3>
+                    <p><strong>Equipamento cinematográfico de última geração:</strong></p>
+                    <ul>
+                        <li>Câmeras profissionais 4K/6K para imagens de altíssima qualidade</li>
+                        <li>Iluminação LED profissional para gravações em estúdio e externa</li>
+                        <li>Áudio broadcast com microfones direcionais e lapelas wireless</li>
+                        <li>Estabilizadores gimbal para movimentos cinematográficos fluídos</li>
+                        <li>Teleprompter profissional para apresentações impecáveis</li>
+                    </ul>
+                </div>
+
+                <div class="infrastructure-item">
+                    <h3><span class="icon">??</span> Drone Cinematográfico</h3>
+                    <p><strong>Imagens aéreas que transformam a comunicação:</strong></p>
+                    <ul>
+                        <li>Drone DJI profissional com câmera 4K estabilizada</li>
+                        <li>Tomadas aéreas de eventos, inaugurações e obras públicas</li>
+                        <li>Vídeos promocionais da cidade com perspectiva única</li>
+                        <li>Documentação visual de projetos e infraestrutura</li>
+                        <li>Operação certificada e segura segundo normativas ANAC</li>
+                    </ul>
+                </div>
+
+                <div class="infrastructure-item">
+                    <h3><span class="icon">??</span> Edição de Vídeo Avançada</h3>
+                    <p><strong>Pós-produção de nível Hollywood:</strong></p>
+                    <ul>
+                        <li>Estação de trabalho profissional para edição 4K/6K</li>
+                        <li>Adobe Premiere Pro, After Effects, DaVinci Resolve</li>
+                        <li>Motion graphics, animações 2D/3D e efeitos visuais</li>
+                        <li>Color grading cinematográfico profissional</li>
+                        <li>Mixagem de áudio e tratamento acústico completo</li>
+                    </ul>
+                </div>
+
+                <div class="infrastructure-item">
+                    <h3><span class="icon">??</span> Tecnologia de Avatar 3D</h3>
+                    <p><strong>Animação 3D de personagens realistas:</strong></p>
+                    <ul>
+                        <li>Software de animação 3D profissional (Blender, Cinema 4D)</li>
+                        <li>Rigging e modelagem de personagens customizados</li>
+                        <li>Lip-sync automático com inteligência artificial</li>
+                        <li>Renderização em alta qualidade com GPU dedicada</li>
+                        <li>Biblioteca de movimentos e expressões naturais</li>
+                    </ul>
+                </div>
+
+                <div class="infrastructure-item">
+                    <h3><span class="icon">??</span> Desenvolvimento Web Avançado</h3>
+                    <p><strong>Sites e sistemas sob medida:</strong></p>
+                    <ul>
+                        <li>Desenvolvimento full-stack com tecnologias modernas</li>
+                        <li>Design responsivo para todos os dispositivos</li>
+                        <li>SEO avançado para máxima visibilidade no Google</li>
+                        <li>Sistemas de gestão de conteúdo intuitivos</li>
+                        <li>Segurança SSL, proteção DDoS e backups automáticos</li>
+                    </ul>
+                </div>
+
+                <div class="infrastructure-item">
+                    <h3><span class="icon">??</span> Design Institucional</h3>
+                    <p><strong>Identidade visual que inspira confiança:</strong></p>
+                    <ul>
+                        <li>Adobe Creative Suite completa (Photoshop, Illustrator, InDesign)</li>
+                        <li>Padronização de marca e manual de identidade visual</li>
+                        <li>Templates profissionais para redes sociais</li>
+                        <li>Materiais gráficos para eventos e campanhas</li>
+                        <li>Design thinking aplicado à comunicação pública</li>
+                    </ul>
+                </div>
+
+                <div class="infrastructure-item">
+                    <h3><span class="icon">??</span> Inteligência Artificial</h3>
+                    <p><strong>IA aplicada à comunicação governamental:</strong></p>
+                    <ul>
+                        <li>Análise de sentimento em redes sociais</li>
+                        <li>Automação de legendas e transcrições</li>
+                        <li>Geração de conteúdo assistida por IA</li>
+                        <li>Chatbots para atendimento ao cidadão</li>
+                        <li>Análise de dados para tomada de decisão estratégica</li>
+                    </ul>
+                </div>
+
+                <div class="infrastructure-item">
+                    <h3><span class="icon">?</span> Entrega Ágil</h3>
+                    <p><strong>Velocidade sem comprometer qualidade:</strong></p>
+                    <ul>
+                        <li>Equipe dedicada com workflow otimizado</li>
+                        <li>Prazos de entrega rápidos e previsíveis</li>
+                        <li>Revisões ilimitadas até aprovação final</li>
+                        <li>Comunicação direta via WhatsApp/e-mail</li>
+                        <li>Entregas emergenciais em até 24-48h (quando necessário)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Avatar Bernardão Section -->
+        <div class="avatar-section">
+            <h2>?? Diferencial Exclusivo: Avatar 3D "Bernardão"</h2>
+            <p class="subtitle">O monumento/estátua mais icônico de Fronteira ganha vida como embaixador digital da cidade</p>
+            
+            <div class="avatar-grid">
+                <div class="avatar-card">
+                    <h3>?? Produção de Vídeos Institucionais com Bernardão</h3>
+                    <p>
+                        Transformamos o símbolo mais reconhecido de Fronteira em um comunicador dinâmico, moderno e acessível. 
+                        Cada vídeo é produzido com animação 3D de alta qualidade, sincronização labial perfeita, movimentos 
+                        naturais e cenários customizados que representam locais reais da cidade.
+                    </p>
+                    <div class="examples">
+                        <h4>?? Exemplos de Vídeos com Avatar 3D:</h4>
+                        <ul>
+                            <li><strong>Campanha de Vacinação:</strong> "Olá, sou o Bernardão! Hoje vim falar sobre a importância de vacinar nossas crianças..."</li>
+                            <li><strong>Arrecadação IPTU:</strong> "Fronteirense, o prazo para pagamento do IPTU com desconto termina dia 15. Regularize agora!"</li>
+                            <li><strong>Festa da Cidade:</strong> "Vem aí a Festa de Fronteira 2026! De 10 a 15 de julho, muita música, cultura e tradição!"</li>
+                            <li><strong>Segurança no Trânsito:</strong> "Motorista, reduza a velocidade perto das escolas. Nossas crianças agradecem!"</li>
+                            <li><strong>Coleta Seletiva:</strong> "Você sabe separar seu lixo? Vou te ensinar como fazer a coleta seletiva do jeito certo!"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="avatar-card">
+                    <h3>?? Aplicações Estratégicas do Avatar</h3>
+                    <p>
+                        O Bernardão 3D não é apenas um personagem - é uma ferramenta de comunicação estratégica que humaniza 
+                        a Prefeitura, cria conexão emocional com a população e aumenta drasticamente o engajamento nas 
+                        mensagens institucionais. Funciona como um porta-voz educativo, nunca político.
+                    </p>
+                    <div class="examples">
+                        <h4>?? Casos de Uso:</h4>
+                        <ul>
+                            <li><strong>Educação Cidadã:</strong> Tutoriais sobre serviços públicos, direitos e deveres</li>
+                            <li><strong>Eventos Municipais:</strong> Convites animados para inaugurações, festividades e ações sociais</li>
+                            <li><strong>Saúde Pública:</strong> Orientações sobre campanhas de saúde, prevenção e bem-estar</li>
+                            <li><strong>Comunicação Escolar:</strong> Mensagens educativas para crianças e adolescentes</li>
+                            <li><strong>Transparência:</strong> Explicação de obras, investimentos e prestação de contas de forma lúdica</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="avatar-card">
+                    <h3>??? Segurança Política em Ano Eleitoral</h3>
+                    <p>
+                        O avatar Bernardão foi especialmente projetado para ser 100% seguro em contexto eleitoral. 
+                        Ele representa a CIDADE, não pessoas. Todas as mensagens são institucionais, educativas e informativas, 
+                        jamais promocionais de gestores ou candidatos.
+                    </p>
+                    <div class="examples">
+                        <h4>? Garantias de Conformidade:</h4>
+                        <ul>
+                            <li>Conteúdo previamente aprovado pelo jurídico municipal</li>
+                            <li>Linguagem neutra, impessoal e educativa</li>
+                            <li>Foco exclusivo em serviços, eventos e informações públicas</li>
+                            <li>Zero menções a nomes de gestores ou autoridades</li>
+                            <li>Conformidade total com legislação eleitoral vigente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proposals Grid -->
+        <div class="proposals-grid">
+            <!-- Proposta 1 -->
+            <div class="proposal-card">
+                <div class="proposal-header">
+                    <span class="proposal-number">PROPOSTA 1</span>
+                    <h2 class="proposal-title">Comunicação Institucional Essencial</h2>
+                    <p class="proposal-subtitle">Entrada estratégica com foco em organização, presença digital consistente e comunicação clara com a população</p>
+                </div>
+
+                <div class="ideal-for">
+                    <h4>?? Perfeita para prefeituras que desejam:</h4>
+                    <ul>
+                        <li>Estruturar a comunicação institucional de forma profissional pela primeira vez</li>
+                        <li>Criar presença digital constante sem riscos políticos</li>
+                        <li>Iniciar a modernização da comunicação com investimento controlado</li>
+                        <li>Manter fluxo regular de informações à população</li>
+                    </ul>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <div class="content-section">
+                    <h4>?? Planejamento Estratégico Mensal</h4>
+                    <ul class="features-list">
+                        <li><strong>Calendário editorial completo:</strong> Definição de todas as pautas, temas e conteúdos do mês com antecedência</li>
+                        <li><strong>Alinhamento institucional:</strong> Reunião mensal (presencial ou online) com equipe da Prefeitura para validação de conteúdos</li>
+                        <li><strong>Análise de contexto:</strong> Estudo de datas comemorativas, eventos municipais e necessidades de comunicação</li>
+                        <li><strong>Aprovação prévia:</strong> Todo conteúdo passa por aprovação antes da publicação</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Conteúdo Informativo Profissional</h4>
+                    <ul class="features-list">
+                        <li><strong>Posts institucionais para redes sociais:</strong> 20 posts/mês com design padronizado e mensagens claras (Facebook, Instagram)</li>
+                        <li><strong>Textos oficiais:</strong> Redação de comunicados, notas à imprensa e informes públicos</li>
+                        <li><strong>Design gráfico profissional:</strong> Identidade visual consistente em todas as peças</li>
+                        <li><strong>Copywriting institucional:</strong> Linguagem acessível, clara e alinhada à comunicação pública</li>
+                        <li><strong>Banco de imagens:</strong> Seleção de fotografias profissionais para ilustração de conteúdos</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Produção de Vídeos Institucionais</h4>
+                    <p style="margin-bottom: 20px; color: #4a5568; font-size: 1.05rem;">
+                        <strong>2 vídeos institucionais por mês</strong> - Duração de até 1 minuto e 40 segundos cada
+                    </p>
+                    <ul class="features-list">
+                        <li><strong>Gravação profissional em 4K:</strong> Com câmeras cinema, iluminação LED e áudio broadcast cristalino</li>
+                        <li><strong>Locações variadas:</strong> Estúdio, locais da cidade, eventos públicos - onde a mensagem fizer mais sentido</li>
+                        <li><strong>Edição cinematográfica:</strong> Cortes dinâmicos, trilha sonora institucional, correção de cores profissional</li>
+                        <li><strong>Motion graphics:</strong> Animações de texto, gráficos e elementos visuais para destacar informações</li>
+                        <li><strong>Legendas inclusivas:</strong> Legendas em português para acessibilidade</li>
+                        <li><strong>Múltiplos formatos:</strong> Versões otimizadas para YouTube, Instagram, Facebook e WhatsApp</li>
+                    </ul>
+                </div>
+
+                <div class="video-examples">
+                    <h5>?? Exemplos de Vídeos Produzidos:</h5>
+                    <ul>
+                        <li><strong>Balanço de Serviços:</strong> "Neste mês, a Prefeitura realizou 150 atendimentos na saúde, pavimentou 3 ruas e inaugurou a nova praça..."</li>
+                        <li><strong>Tutorial de Serviços:</strong> "Como solicitar segunda via de documentos pela internet - passo a passo completo"</li>
+                        <li><strong>Cobertura de Eventos:</strong> "Veja os melhores momentos da Feira do Empreendedor 2026" (com imagens de drone)</li>
+                        <li><strong>Avisos Importantes:</strong> "Cronograma de vacinação contra a gripe - confira os postos e horários"</li>
+                        <li><strong>Institucional:</strong> "Conheça os canais de atendimento da Prefeitura de Fronteira"</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>??? Linguagem Segura e Educativa</h4>
+                    <ul class="features-list">
+                        <li><strong>Conformidade legal:</strong> Todo conteúdo respeitando legislação eleitoral e normas de publicidade governamental</li>
+                        <li><strong>Impessoalidade:</strong> Foco em ações, serviços e resultados - nunca em promoção pessoal</li>
+                        <li><strong>Transparência:</strong> Informações claras, objetivas e verificáveis</li>
+                        <li><strong>Acessibilidade:</strong> Linguagem simples, compreensível para todos os públicos</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Relatório Técnico Mensal</h4>
+                    <ul class="features-list">
+                        <li><strong>Métricas de desempenho:</strong> Alcance, engajamento, visualizações de cada conteúdo produzido</li>
+                        <li><strong>Análise de resultados:</strong> Quais temas geraram mais interação e interesse da população</li>
+                        <li><strong>Registro completo:</strong> Documentação de todas as entregas realizadas no período</li>
+                        <li><strong>Recomendações estratégicas:</strong> Sugestões de melhorias e ajustes para o mês seguinte</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h5>? Ideal para começar sem resistência administrativa</h5>
+                    <p>
+                        Este pacote é perfeito para prefeituras que nunca tiveram comunicação estruturada ou que precisam 
+                        recomeçar com segurança. Investimento acessível, resultados mensuráveis e risco político zero.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Proposta 2 -->
+            <div class="proposal-card">
+                <div class="proposal-header">
+                    <span class="proposal-number">PROPOSTA 2</span>
+                    <h2 class="proposal-title">Comunicação Institucional Estratégica</h2>
+                    <p class="proposal-subtitle">Mais alcance, mais autoridade, mais valor percebido - com tecnologia de avatar 3D e frequência aumentada de conteúdo</p>
+                    <span class="badge">? MAIS POPULAR</span>
+                </div>
+
+                <div class="ideal-for">
+                    <h4>?? Recomendada para prefeituras que buscam:</h4>
+                    <ul>
+                        <li>Diferenciação regional com inovação tecnológica (Avatar 3D)</li>
+                        <li>Maior volume e frequência de comunicação institucional</li>
+                        <li>Identidade visual forte e memorável</li>
+                        <li>Equilíbrio perfeito entre impacto e segurança política</li>
+                    </ul>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <div class="content-section">
+                    <h4>?? Tudo da Proposta 1 Incluído +</h4>
+                    <ul class="features-list">
+                        <li>Todos os 20 posts mensais de redes sociais</li>
+                        <li>Planejamento estratégico mensal completo</li>
+                        <li>Textos oficiais e comunicados</li>
+                        <li>Relatório técnico mensal de resultados</li>
+                        <li>Linguagem institucional segura e aprovada</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Avatar 3D "Bernardão" Ativo</h4>
+                    <p style="margin-bottom: 20px; color: #4a5568; font-size: 1.05rem;">
+                        <strong>O diferencial que coloca Fronteira na vanguarda da comunicação pública digital</strong>
+                    </p>
+                    <ul class="features-list">
+                        <li><strong>Modelagem 3D exclusiva:</strong> Avatar Bernardão criado do zero, com fidelidade ao monumento real da cidade</li>
+                        <li><strong>Animação profissional:</strong> Movimentos naturais, expressões faciais e linguagem corporal humanizada</li>
+                        <li><strong>Sincronização labial perfeita:</strong> Tecnologia de lip-sync com IA para dublagem realista</li>
+                        <li><strong>Cenários customizados:</strong> Ambientes 3D que reproduzem locais icônicos de Fronteira</li>
+                        <li><strong>Biblioteca de gestos:</strong> Expressões e movimentos pré-programados para rapidez na produção</li>
+                        <li><strong>Renderização 4K:</strong> Qualidade cinematográfica em cada frame do vídeo</li>
+                    </ul>
+                </div>
+
+                <div class="video-examples">
+                    <h5>?? Exemplos de Vídeos com Avatar Bernardão 3D:</h5>
+                    <ul>
+                        <li><strong>Campanha Educativa:</strong> Bernardão explicando como funciona o programa Bolsa Família direto na praça da cidade (cenário 3D)</li>
+                        <li><strong>Convite para Evento:</strong> "E aí, fronteirense! Vem aí o Arraiá da Cidade. Te espero lá!" (com figurino junino animado)</li>
+                        <li><strong>Conscientização Ambiental:</strong> Bernardão ensinando crianças sobre preservação do meio ambiente</li>
+                        <li><strong>Divulgação Cultural:</strong> "A biblioteca municipal está com novos livros! Vem conhecer a programação de leitura"</li>
+                        <li><strong>Saúde Pública:</strong> "Atenção, mamães e papais: começou a campanha de vacinação infantil. Proteja seu filho!"</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? 3 Vídeos Institucionais por Mês</h4>
+                    <p style="margin-bottom: 20px; color: #4a5568; font-size: 1.05rem;">
+                        <strong>Aumento de 50% na produção de vídeos</strong> - sendo pelo menos 1 com avatar 3D Bernardão
+                    </p>
+                    <ul class="features-list">
+                        <li><strong>Vídeo 1 - Com Avatar 3D:</strong> Mensagem institucional animada com Bernardão (campanhas, convites, educação)</li>
+                        <li><strong>Vídeo 2 - Gravação Real:</strong> Cobertura de eventos, inaugurações ou prestação de serviços</li>
+                        <li><strong>Vídeo 3 - Mix ou Drone:</strong> Vídeo híbrido (real + animação) ou tomadas aéreas espetaculares da cidade</li>
+                        <li><strong>Qualidade premium:</strong> Todas as entregas em 4K, edição avançada com motion graphics e color grading</li>
+                        <li><strong>Trilha sonora original:</strong> Músicas livres de direitos autorais ou produção exclusiva quando necessário</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Padronização Visual Institucional Completa</h4>
+                    <ul class="features-list">
+                        <li><strong>Manual de identidade visual:</strong> Guia completo com cores, fontes e padrões da comunicação municipal</li>
+                        <li><strong>Templates profissionais:</strong> Modelos prontos para posts, stories, capas e banners</li>
+                        <li><strong>Assinaturas visuais:</strong> Vinhetas de abertura/encerramento para todos os vídeos institucionais</li>
+                        <li><strong>Watermark oficial:</strong> Marca d'água da Prefeitura em todos os materiais audiovisuais</li>
+                        <li><strong>Pacote gráfico:</strong> Ícones, elementos decorativos e assets exclusivos da marca Fronteira</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Planejamento Trimestral Estratégico</h4>
+                    <ul class="features-list">
+                        <li><strong>Visão de longo prazo:</strong> Planejamento de 3 meses com antecedência para alinhamento estratégico</li>
+                        <li><strong>Campanhas integradas:</strong> Ações de comunicação coordenadas entre múltiplos canais</li>
+                        <li><strong>Calendário anual:</strong> Mapeamento de todas as datas importantes, eventos e oportunidades de comunicação</li>
+                        <li><strong>Ajustes flexíveis:</strong> Possibilidade de alterações no plano conforme necessidades urgentes</li>
+                    </ul>
+                </div>
+
+                <div class="tech-specs">
+                    <h5>?? Especificações Técnicas dos Vídeos:</h5>
+                    <ul>
+                        <li>Resolução: 4K (3840x2160)</li>
+                        <li>Áudio: 48kHz estéreo</li>
+                        <li>Codec: H.264/H.265</li>
+                        <li>Color Space: Rec.709</li>
+                        <li>Frame Rate: 24/30/60fps</li>
+                        <li>Legendas: SRT embutidas</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h5>?? Equilíbrio perfeito entre impacto e segurança em ano político</h5>
+                    <p>
+                        Esta proposta foi desenhada para municípios que querem ser referência em comunicação digital, 
+                        mas sem correr riscos em contexto eleitoral. O avatar Bernardão comunica a cidade, não pessoas. 
+                        Tecnologia de ponta + segurança jurídica + resultados mensuráveis.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Proposta 3 -->
+            <div class="proposal-card">
+                <div class="proposal-header">
+                    <span class="proposal-number">PROPOSTA 3</span>
+                    <h2 class="proposal-title">Ecossistema Institucional MyndVerse</h2>
+                    <p class="proposal-subtitle">Não é um site. É a infraestrutura digital completa que transforma a Prefeitura em referência de modernidade e transparência</p>
+                    <span class="badge">?? MASTER</span>
+                </div>
+
+                <div class="ideal-for">
+                    <h4>?? Para prefeituras que desejam:</h4>
+                    <ul>
+                        <li>Transformação digital completa da gestão pública</li>
+                        <li>Ser referência regional em transparência e modernidade</li>
+                        <li>Centralizar toda comunicação e serviços em uma plataforma única</li>
+                        <li>Investir em tecnologia que permanece além de mandatos</li>
+                    </ul>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <div class="content-section">
+                    <h4>?? Portal Institucional Avançado</h4>
+                    <p style="margin-bottom: 20px; color: #4a5568; font-size: 1.05rem;">
+                        <strong>Site institucional de última geração</strong> - não um portal comum, mas uma plataforma completa de serviços
+                    </p>
+                    <ul class="features-list">
+                        <li><strong>Desenvolvimento full-stack customizado:</strong> Tecnologias modernas (React, Node.js, PostgreSQL) para máxima performance</li>
+                        <li><strong>Design responsivo premium:</strong> Interface impecável em desktop, tablet e smartphone</li>
+                        <li><strong>Acessibilidade WCAG 2.1:</strong> Site 100% acessível para pessoas com deficiência (leitores de tela, alto contraste, navegação por teclado)</li>
+                        <li><strong>Velocidade otimizada:</strong> Carregamento em menos de 2 segundos (Core Web Vitals no verde)</li>
+                        <li><strong>SSL e segurança avançada:</strong> Certificado de segurança, proteção contra ataques DDoS e invasões</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Blog Institucional com SEO Avançado</h4>
+                    <ul class="features-list">
+                        <li><strong>Sistema de publicação intuitivo:</strong> Equipe da prefeitura pode publicar notícias sem conhecimento técnico</li>
+                        <li><strong>SEO on-page completo:</strong> Otimização para aparecer nas primeiras posições do Google</li>
+                        <li><strong>Categorização inteligente:</strong> Saúde, Educação, Obras, Eventos, Legislação, etc.</li>
+                        <li><strong>Busca interna avançada:</strong> Encontrar qualquer informação em segundos</li>
+                        <li><strong>Compartilhamento social:</strong> Botões para Facebook, WhatsApp, Twitter, LinkedIn</li>
+                        <li><strong>Feed RSS:</strong> Integração automática com agregadores de notícias</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Calendário Oficial de Eventos</h4>
+                    <ul class="features-list">
+                        <li><strong>Agenda pública completa:</strong> Todos os eventos municipais em um só lugar</li>
+                        <li><strong>Filtros por categoria:</strong> Cultura, Esporte, Saúde, Educação, Reuniões Públicas</li>
+                        <li><strong>Exportação para Google Calendar:</strong> Cidadãos podem adicionar eventos em seus calendários</li>
+                        <li><strong>Notificações automáticas:</strong> E-mails de lembrete para eventos cadastrados</li>
+                        <li><strong>Integração com redes sociais:</strong> Publicação automática de eventos no Facebook/Instagram</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Mural de Perguntas Moderado</h4>
+                    <ul class="features-list">
+                        <li><strong>Perguntas e respostas públicas:</strong> Cidadãos fazem perguntas, prefeitura responde publicamente</li>
+                        <li><strong>Sistema de moderação:</strong> Filtro de palavrões, spam e conteúdo inadequado</li>
+                        <li><strong>Aprovação prévia:</strong> Perguntas só aparecem após validação do administrador</li>
+                        <li><strong>Banco de FAQ:</strong> Respostas frequentes ficam disponíveis para consulta permanente</li>
+                        <li><strong>Estatísticas de dúvidas:</strong> Relatório de quais temas geram mais questionamentos</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Enquetes e Pesquisas Públicas</h4>
+                    <ul class="features-list">
+                        <li><strong>Criação ilimitada de enquetes:</strong> Qualquer tema pode ser submetido à população</li>
+                        <li><strong>Múltiplos formatos:</strong> Múltipla escolha, escala de 1 a 5, perguntas abertas</li>
+                        <li><strong>Links compartilháveis:</strong> Enviar enquete via WhatsApp, e-mail, redes sociais</li>
+                        <li><strong>Resultados em tempo real:</strong> Gráficos automáticos conforme votos chegam</li>
+                        <li><strong>Exportação de dados:</strong> Download de resultados em Excel/PDF</li>
+                        <li><strong>Controle de participação:</strong> Opção de limitar 1 voto por CPF ou permitir votação livre</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Canal de Denúncias (inclusive anônimas)</h4>
+                    <ul class="features-list">
+                        <li><strong>Protocolo automático:</strong> Cada denúncia gera número de protocolo único para acompanhamento</li>
+                        <li><strong>Denúncias anônimas protegidas:</strong> Sistema que garante total anonimato do denunciante</li>
+                        <li><strong>Categorização de denúncias:</strong> Saúde, Infraestrutura, Meio Ambiente, Corrupção, Assédio, Outros</li>
+                        <li><strong>Anexo de arquivos:</strong> Fotos, vídeos e documentos como prova</li>
+                        <li><strong>Workflow de tratamento:</strong> Denúncia é encaminhada automaticamente ao setor responsável</li>
+                        <li><strong>Acompanhamento público:</strong> Denunciante pode ver status (Em análise ? Em andamento ? Resolvida)</li>
+                        <li><strong>Painel estatístico:</strong> Dashboard com número de denúncias por tipo, tempo médio de resolução</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Área do Cidadão</h4>
+                    <ul class="features-list">
+                        <li><strong>Login personalizado:</strong> Cada cidadão tem sua conta com CPF</li>
+                        <li><strong>Histórico de solicitações:</strong> Acesso a todos os protocolos abertos pelo cidadão</li>
+                        <li><strong>Documentos digitais:</strong> Download de certidões, comprovantes e documentos oficiais</li>
+                        <li><strong>Agendamento online:</strong> Marcação de consultas, atendimentos e serviços</li>
+                        <li><strong>Boletos e tributos:</strong> Emissão de segunda via de IPTU, taxas e contribuições</li>
+                        <li><strong>Notificações personalizadas:</strong> Avisos sobre serviços do interesse do cidadão</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Área da Imprensa</h4>
+                    <ul class="features-list">
+                        <li><strong>Sala de imprensa digital:</strong> Comunicados, notas oficiais e releases em ordem cronológica</li>
+                        <li><strong>Banco de imagens em alta:</strong> Fotos oficiais disponíveis para download (eventos, autoridades, obras)</li>
+                        <li><strong>Kit de mídia:</strong> Logotipos, brasões e materiais institucionais vetorizados</li>
+                        <li><strong>Contatos de assessoria:</strong> Telefones e e-mails diretos de porta-vozes oficiais</li>
+                        <li><strong>Agenda do prefeito:</strong> Compromissos públicos da agenda oficial</li>
+                    </ul>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <div class="content-section">
+                    <h4>?? Painel de Controle Administrativo (Dashboard)</h4>
+                    <p style="margin-bottom: 20px; color: #4a5568; font-size: 1.05rem;">
+                        <strong>Central de comando completa</strong> - tudo que a prefeitura precisa gerenciar em um único lugar
+                    </p>
+                    <ul class="features-list">
+                        <li><strong>Login seguro com permissões:</strong> Diferentes níveis de acesso (Admin, Editor, Moderador)</li>
+                        <li><strong>Gestão de denúncias:</strong> Visualizar, categorizar, encaminhar e responder denúncias</li>
+                        <li><strong>Gestão de eventos:</strong> Criar, editar, cancelar e publicar eventos no calendário público</li>
+                        <li><strong>Gestão de conteúdos:</strong> Publicar notícias, artigos e atualizações com editor visual intuitivo</li>
+                        <li><strong>Gestão de usuários:</strong> Adicionar/remover funcionários com acesso ao sistema</li>
+                        <li><strong>Moderação de perguntas:</strong> Aprovar/rejeitar perguntas do mural público</li>
+                        <li><strong>Gestão de enquetes:</strong> Criar, ativar, desativar e analisar resultados de pesquisas</li>
+                        <li><strong>Analytics integrado:</strong> Gráficos de visitação, páginas mais acessadas, origem do tráfego</li>
+                        <li><strong>Logs de atividade:</strong> Registro de quem fez o que e quando (auditoria completa)</li>
+                    </ul>
+                </div>
+
+                <div class="tech-specs">
+                    <h5>?? Tecnologias e Infraestrutura:</h5>
+                    <ul>
+                        <li>Frontend: React.js + Next.js</li>
+                        <li>Backend: Node.js + Express</li>
+                        <li>Banco de dados: PostgreSQL</li>
+                        <li>Hospedagem: AWS/Google Cloud</li>
+                        <li>CDN: Cloudflare</li>
+                        <li>SSL: Let's Encrypt</li>
+                        <li>Backups: Diários automáticos</li>
+                        <li>Uptime: 99.9% garantido</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h4>?? Manutenção & Evolução Contínua</h4>
+                    <ul class="features-list">
+                        <li><strong>Manutenção mensal inclusa:</strong> Atualizações de segurança, correção de bugs, otimizações de performance</li>
+                        <li><strong>Suporte técnico prioritário:</strong> Atendimento em até 4 horas úteis para problemas críticos</li>
+                        <li><strong>Backups automáticos diários:</strong> Recuperação de dados em caso de emergência</li>
+                        <li><strong>Monitoramento 24/7:</strong> Alertas automáticos se o site ficar fora do ar</li>
+                        <li><strong>Atualizações de tecnologia:</strong> Sistema sempre atualizado com as últimas versões seguras</li>
+                        <li><strong>Relatório mensal de saúde:</strong> Status do sistema, desempenho e recomendações técnicas</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h5>? Novas Funcionalidades Sob Demanda</h5>
+                    <p>
+                        O sistema é totalmente expansível. Precisa de um novo módulo? Integração com sistema de outra secretaria? 
+                        Portal de transparência específico? Sistema de protocolo digital? Cada nova funcionalidade pode ser 
+                        desenvolvida e integrada por apenas <strong>R$ 100 por funcionalidade adicional</strong> (funcionalidades 
+                        simples a moderadas - funcionalidades complexas sob orçamento específico).
+                    </p>
+                </div>
+
+                <div class="video-examples">
+                    <h5>?? Exemplos de Funcionalidades Adicionais:</h5>
+                    <ul>
+                        <li><strong>Portal da Transparência:</strong> Integração com dados de gastos públicos, licitações e contratos</li>
+                        <li><strong>Ouvidoria Digital:</strong> Sistema completo de reclamações, sugestões e elogios</li>
+                        <li><strong>Nota Fiscal Eletrônica:</strong> Geração e consulta de notas fiscais de serviços</li>
+                        <li><strong>Diário Oficial Digital:</strong> Publicação e consulta de atos oficiais do município</li>
+                        <li><strong>Sistema de Protocolo:</strong> Abertura e acompanhamento de processos administrativos</li>
+                        <li><strong>Concursos Públicos:</strong> Módulo específico para gestão de editais e inscrições</li>
+                    </ul>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <div class="highlight-box">
+                    <h5>?? Por que este é o MASTER?</h5>
+                    <p>
+                        Esta proposta transforma completamente a presença digital da Prefeitura. Não é apenas comunicação - 
+                        é governança digital, transparência ativa, participação popular e eficiência administrativa. 
+                        <strong>A Prefeitura de Fronteira se posicionará como referência tecnológica regional</strong>, 
+                        atraindo investimentos, turismo e reconhecimento como cidade moderna e transparente.
+                    </p>
+                </div>
+
+                <div class="political-year">
+                    <h3>??? Segurança Total em Ano Eleitoral</h3>
+                    <p>
+                        Todo o sistema foi arquitetado para ser institucional, não pessoal. Serve à PREFEITURA, não a 
+                        indivíduos. Qualquer gestor que assuma pode utilizar a mesma infraestrutura. É um investimento 
+                        que permanece além de mandatos, criando valor público duradouro e conformidade total com 
+                        legislação eleitoral.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Final -->
+        <div class="cta-section">
+            <h2>Por que escolher a MyndVerse?</h2>
+            
+            <p class="quote">
+                "A MyndVerse não vende marketing. Nós estruturamos a comunicação pública para gerar confiança, 
+                transparência e credibilidade institucional."
+            </p>
+            
+            <p>
+                Somos especialistas em comunicação governamental com <strong>infraestrutura profissional completa</strong>: 
+                câmeras 4K/6K, drone cinematográfico, estação de edição avançada, tecnologia de avatar 3D, desenvolvimento 
+                web full-stack e equipe multidisciplinar com experiência comprovada.
+            </p>
+
+            <p>
+                Não terceirizamos. <strong>Tudo é produzido internamente</strong> com controle total de qualidade, 
+                agilidade nas entregas e segurança da informação. Equipamentos próprios, equipe dedicada, processos 
+                documentados e resultados mensuráveis.
+            </p>
+
+            <div class="political-year">
+                <h3>??? Especial para 2026 - Ano Eleitoral</h3>
+                <p>
+                    Todas as três propostas foram meticulosamente desenvolvidas para <strong>eliminar riscos políticos</strong>. 
+                    Nosso compromisso: zero promoção pessoal, foco total em serviço público, conformidade com legislação 
+                    eleitoral, redução de risco jurídico e aceitação por equipes técnicas (jurídico, controle interno, 
+                    gabinete). Comunicação que informa, não promove. Tecnologia que serve à cidade, não a pessoas.
+                </p>
+            </div>
+
+            <p style="margin-top: 40px; font-size: 1.3rem; color: #667eea; font-weight: 600;">
+                ?? Entre em contato para agendar apresentação personalizada e conhecer cases de sucesso
+            </p>
+        </div>
+    </div>
+</body>
+</html>
