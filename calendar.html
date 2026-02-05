@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fronteira - MG | Calendário Premium de Eventos Urbanos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #e94560;
+            --accent-light: #ff6b8b;
+            --gold-color: #d4af37;
+            --light-color: #f9f9f9;
+            --gray-color: #8a8a8a;
+            --dark-gray: #333;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--light-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--gold-color);
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav a:hover {
+            color: var(--accent-light);
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 15px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--light-color);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--light-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 8px 20px;
+            width: 300px;
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: var(--light-color);
+            width: 100%;
+            padding: 10px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-bar i {
+            color: var(--gray-color);
+        }
+
+        /* Main Layout */
+        .main-content {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Sidebar - Calendar */
+        .sidebar {
+            width: 350px;
+            flex-shrink: 0;
+        }
+
+        .calendar-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-header h2 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .calendar-nav button {
+            background: transparent;
+            border: none;
+            color: var(--light-color);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .calendar-nav button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--gray-color);
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .calendar-day {
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .calendar-day:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .calendar-day.active {
+            background: var(--accent-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .calendar-day.event-day {
+            position: relative;
+        }
+
+        .calendar-day.event-day::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            width: 5px;
+            height: 5px;
+            background: var(--gold-color);
+            border-radius: 50%;
+        }
+
+        .calendar-day.other-month {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Filters */
+        .filters {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .filters h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-category {
+            margin-bottom: 25px;
+        }
+
+        .filter-category h4 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: var(--gray-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-option {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .filter-option.active {
+            background: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Events Section */
+        .events-section {
+            flex: 1;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-header h2 span {
+            color: var(--accent-color);
+        }
+
+        .view-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--light-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .view-btn.active {
+            background: var(--accent-color);
+        }
+
+        .view-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Events Grid */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .event-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .event-card.premium::before {
+            content: 'PREMIUM';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold-color);
+            color: var(--primary-color);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 20px;
+            z-index: 2;
+            letter-spacing: 1px;
+        }
+
+        .event-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 25px;
+        }
+
+        .event-category {
+            display: inline-block;
+            background: rgba(233, 69, 96, 0.2);
+            color: var(--accent-light);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .event-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .event-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray-color);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .event-date i {
+            color: var(--accent-color);
+        }
+
+        .event-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .event-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .event-location, .event-price {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .event-location i, .event-price i {
+            color: var(--accent-color);
+        }
+
+        .event-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .event-action-btn {
+            background: transparent;
+            border: none;
+            color: var(--light-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .event-action-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .event-action-btn.save:hover {
+            color: #ff6b8b;
+        }
+
+        .event-action-btn.share:hover {
+            color: #4dabf7;
+        }
+
+        .event-action-btn.buy:hover {
+            color: #51cf66;
+        }
+
+        /* Featured Event */
+        .featured-event {
+            background: linear-gradient(rgba(22, 33, 62, 0.9), rgba(22, 33, 62, 0.9)), url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold-color);
+            color: var(--primary-color);
+            font-weight: 700;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .featured-content {
+            max-width: 600px;
+        }
+
+        .featured-content h3 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .featured-content p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .featured-details {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .featured-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .featured-detail i {
+            font-size: 24px;
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .newsletter h4 {
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light-color);
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .search-bar {
+                width: 100%;
+            }
+            
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-content h3 {
+                font-size: 28px;
+            }
+            
+            .featured-details {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header container">
+        <div class="logo">
+            <i class="fas fa-city"></i>
+            City<span>Pulse</span>
+        </div>
+        <nav class="nav">
+            <a href="#" class="active">Eventos</a>
+            <a href="#">Categorias</a>
+            <a href="#">Artistas</a>
+            <a href="#">Locais</a>
+            <a href="#">Premium</a>
+        </nav>
+        <div class="user-actions">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar eventos, artistas, locais...">
+            </div>
+            <button class="btn btn-outline">Entrar</button>
+            <button class="btn btn-primary">Criar Conta</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Calendar -->
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <h2>Junho 2026</h2>
+                        <div class="calendar-nav">
+                            <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                            <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="calendar-weekdays">
+                        <div>Dom</div>
+                        <div>Seg</div>
+                        <div>Ter</div>
+                        <div>Qua</div>
+                        <div>Qui</div>
+                        <div>Sex</div>
+                        <div>Sáb</div>
+                    </div>
+                    <div class="calendar-days" id="calendar-days">
+                        <!-- Days will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters">
+                    <h3><i class="fas fa-filter"></i> Filtros</h3>
+                    
+                    <div class="filter-category">
+                        <h4>Categorias</h4>
+                        <div class="filter-options">
+                            <div class="filter-option active">Todos</div>
+                            <div class="filter-option">Música</div>
+                            <div class="filter-option">Teatro</div>
+                            <div class="filter-option">Arte</div>
+                            <div class="filter-option">Esportes</div>
+                            <div class="filter-option">Gastronomia</div>
+                            <div class="filter-option">Tecnologia</div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-category">
+                        <h4>Preço</h4>
+                        <div class="filter-options">
+                            <div class="filter-option active">Todos</div>
+                            <div class="filter-option">Gratuito</div>
+                            <div class="filter-option">Até R$50</div>
+                            <div class="filter-option">R$50 - R$100</div>
+                            <div class="filter-option">Premium</div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-category">
+                        <h4>Local</h4>
+                        <div class="filter-options">
+                            <div class="filter-option active">Todos</div>
+                            <div class="filter-option">Centro</div>
+                            <div class="filter-option">Zona Sul</div>
+                            <div class="filter-option">Zona Norte</div>
+                            <div class="filter-option">Zona Leste</div>
+                            <div class="filter-option">Zona Oeste</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Events Section -->
+            <main class="events-section">
+                <!-- Featured Event -->
+                <div class="featured-event">
+                    <div class="featured-badge">EVENTO EM DESTAQUE</div>
+                    <div class="featured-content">
+                        <h3>Coldplay: Turnê Da Música em Fronteira - MG</h3>
+                        <p>Uma experiência única com a banda britânica em sua turnê mundial. Show com tecnologia de ponta, efeitos visuais impressionantes e todas as músicas que marcaram gerações.</p>
+                        <div class="featured-details">
+                            <div class="featured-detail">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <div class="detail-title">Data</div>
+                                    <div class="detail-info">24 de Junho, 2026</div>
+                                </div>
+                            </div>
+                            <div class="featured-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <div class="detail-title">Local</div>
+                                    <div class="detail-info">Centro de eventos DRA AMAL SIMBOLE CAMPOS</div>
+                                </div>
+                            </div>
+                            <div class="featured-detail">
+                                <i class="fas fa-tag"></i>
+                                <div>
+                                    <div class="detail-title">Ingressos a partir de</div>
+                                    <div class="detail-info">R$ 280,00</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">Comprar Ingressos <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Events Header -->
+                <div class="section-header">
+                    <h2>Próximos <span>Eventos</span></h2>
+                    <div class="view-options">
+                        <button class="view-btn active" id="grid-view"><i class="fas fa-th"></i></button>
+                        <button class="view-btn" id="list-view"><i class="fas fa-list"></i></button>
+                    </div>
+                </div>
+
+                <!-- Events Grid -->
+                <div class="events-grid" id="events-container">
+                    <!-- Event cards will be generated by JavaScript -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>CityPulse</h4>
+                    <p>O mais completo calendário de eventos urbanos. Descubra e viva experiências incríveis na sua cidade.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Eventos em Destaque</a></li>
+                        <li><a href="#">Calendário Completo</a></li>
+                        <li><a href="#">Para Organizadores</a></li>
+                        <li><a href="#">Seja um Parceiro</a></li>
+                        <li><a href="#">Aplicativo Móvel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Categorias</h4>
+                    <ul>
+                        <li><a href="#">Shows & Música</a></li>
+                        <li><a href="#">Teatro & Cultura</a></li>
+                        <li><a href="#">Esportes & Fitness</a></li>
+                        <li><a href="#">Gastronomia</a></li>
+                        <li><a href="#">Tecnologia & Inovação</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Receba os melhores eventos da semana no seu e-mail.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Seu e-mail">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                    <p class="small">Ao se inscrever, você concorda com nossa Política de Privacidade.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CityPulse. Todos os direitos reservados. | <a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Event data
+        const events = [
+            {
+                id: 1,
+                title: "Show: The Rolling Stones - 60th Anniversary Tour",
+                date: "15 de Junho, 2026",
+                time: "21:00",
+                category: "Música",
+                location: "Allianz Parque",
+                price: "R$ 450,00",
+                description: "A lendária banda de rock retorna à cidade com seu tour de 60 anos. Setlist com clássicos e surpresas.",
+                image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+                premium: true
+            },
+            {
+                id: 2,
+                title: "Festival de Inverno de Jazz",
+                date: "18 de Junho, 2026",
+                time: "19:30",
+                category: "Música",
+                location: "Teatro Municipal",
+                price: "R$ 120,00",
+                description: "Uma noite com os maiores nomes do jazz nacional e internacional. Edição especial de inverno.",
+                image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+                premium: false
+            },
+            {
+                id: 3,
+                title: "Exposição: Van Gogh Experience",
+                date: "22 de Junho, 2026",
+                time: "10:00 - 22:00",
+                category: "Arte",
+                location: "Museu de Arte Moderna",
+                price: "R$ 80,00",
+                description: "Exposição imersiva com projeções em 360° das obras mais famosas de Vincent Van Gogh.",
+                image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&auto=format&fit=crop&w=1458&q=80",
+                premium: true
+            },
+            {
+                id: 4,
+                title: "Peça: Hamlet - Adaptação Contemporânea",
+                date: "25 de Junho, 2026",
+                time: "20:00",
+                category: "Teatro",
+                location: "Teatro Santander",
+                price: "R$ 90,00",
+                description: "Clássico de Shakespeare adaptado para os dias atuais. Com direção premiada de João Faria.",
+                image: "https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80",
+                premium: false
+            },
+            {
+                id: 5,
+                title: "Maratona Internacional da Cidade",
+                date: "30 de Junho, 2026",
+                time: "07:00",
+                category: "Esportes",
+                location: "Parque Ibirapuera",
+                price: "Gratuito",
+                description: "Corrida de 10km e 21km com percursos pela cidade. Inscrições abertas para todas as idades.",
+                image: "https://images.unsplash.com/photo-1552674605-db6ffd8facb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+                premium: false
+            },
+            {
+                id: 6,
+                title: "Feira Gastronômica: Sabores do Mundo",
+                date: "28 de Junho, 2026",
+                time: "12:00 - 23:00",
+                category: "Gastronomia",
+                location: "Centro de Convenções",
+                price: "R$ 40,00",
+                description: "Mais de 50 chefs apresentando culinárias de diferentes países. Experiência única para food lovers.",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1481&q=80",
+                premium: false
+            }
+        ];
+
+        // Calendar functionality
+        const calendarDays = document.getElementById('calendar-days');
+        const prevMonthBtn = document.getElementById('prev-month');
+        const nextMonthBtn = document.getElementById('next-month');
+        
+        let currentDate = new Date(2026, 5, 1); // June 2026
+        
+        function renderCalendar() {
+            calendarDays.innerHTML = '';
+            
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            // First day of the month
+            const firstDay = new Date(year, month, 1);
+            // Last day of the month
+            const lastDay = new Date(year, month + 1, 0);
+            // Days in month
+            const daysInMonth = lastDay.getDate();
+            // First day of week (0 = Sunday, 1 = Monday, etc.)
+            const firstDayOfWeek = firstDay.getDay();
+            
+            // Previous month days
+            const prevMonthLastDay = new Date(year, month, 0).getDate();
+            
+            // Render previous month days
+            for (let i = firstDayOfWeek - 1; i >= 0; i--) {
+                const day = document.createElement('div');
+                day.classList.add('calendar-day', 'other-month');
+                day.textContent = prevMonthLastDay - i;
+                calendarDays.appendChild(day);
+            }
+            
+            // Render current month days
+            const eventDays = [15, 18, 22, 25, 28, 30]; // Days with events
+            for (let i = 1; i <= daysInMonth; i++) {
+                const day = document.createElement('div');
+                day.classList.add('calendar-day');
+                day.textContent = i;
+                
+                // Mark today (for demo, we'll mark 10th as "today")
+                if (i === 10) {
+                    day.classList.add('active');
+                }
+                
+                // Mark days with events
+                if (eventDays.includes(i)) {
+                    day.classList.add('event-day');
+                }
+                
+                calendarDays.appendChild(day);
+            }
+            
+            // Render next month days to complete the grid
+            const totalCells = 42; // 6 rows x 7 columns
+            const cellsUsed = firstDayOfWeek + daysInMonth;
+            const nextMonthDays = totalCells - cellsUsed;
+            
+            for (let i = 1; i <= nextMonthDays; i++) {
+                const day = document.createElement('div');
+                day.classList.add('calendar-day', 'other-month');
+                day.textContent = i;
+                calendarDays.appendChild(day);
+            }
+            
+            // Update month display
+            document.querySelector('.calendar-header h2').textContent = 
+                `${monthNames[month]} ${year}`;
+        }
+        
+        const monthNames = [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+        ];
+        
+        prevMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+        
+        nextMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+        
+        // Events rendering
+        const eventsContainer = document.getElementById('events-container');
+        
+        function renderEvents() {
+            eventsContainer.innerHTML = '';
+            
+            events.forEach(event => {
+                const eventCard = document.createElement('div');
+                eventCard.className = 'event-card';
+                if (event.premium) eventCard.classList.add('premium');
+                
+                eventCard.innerHTML = `
+                    <img src="${event.image}" alt="${event.title}" class="event-image">
+                    <div class="event-content">
+                        <span class="event-category">${event.category}</span>
+                        <h3 class="event-title">${event.title}</h3>
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i>
+                            <span>${event.date} • ${event.time}</span>
+                        </div>
+                        <p class="event-description">${event.description}</p>
+                        <div class="event-details">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${event.location}</span>
+                            </div>
+                            <div class="event-price">
+                                <i class="fas fa-tag"></i>
+                                <span>${event.price}</span>
+                            </div>
+                        </div>
+                        <div class="event-actions">
+                            <button class="event-action-btn save">
+                                <i class="far fa-bookmark"></i> Salvar
+                            </button>
+                            <button class="event-action-btn share">
+                                <i class="fas fa-share-alt"></i> Compartilhar
+                            </button>
+                            <button class="event-action-btn buy">
+                                <i class="fas fa-ticket-alt"></i> Comprar
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                eventsContainer.appendChild(eventCard);
+            });
+        }
+        
+        // Filter functionality
+        const filterOptions = document.querySelectorAll('.filter-option');
+        filterOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove active class from all options in the same category
+                const parent = this.parentElement;
+                const siblings = parent.querySelectorAll('.filter-option');
+                siblings.forEach(sibling => sibling.classList.remove('active'));
+                
+                // Add active class to clicked option
+                this.classList.add('active');
+                
+                // In a real application, this would filter the events
+                // For demo, we'll just show a message
+                console.log(`Filtered by: ${this.textContent}`);
+            });
+        });
+        
+        // View toggle
+        const gridViewBtn = document.getElementById('grid-view');
+        const listViewBtn = document.getElementById('list-view');
+        
+        gridViewBtn.addEventListener('click', function() {
+            gridViewBtn.classList.add('active');
+            listViewBtn.classList.remove('active');
+            eventsContainer.classList.remove('list-view');
+        });
+        
+        listViewBtn.addEventListener('click', function() {
+            listViewBtn.classList.add('active');
+            gridViewBtn.classList.remove('active');
+            eventsContainer.classList.add('list-view');
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCalendar();
+            renderEvents();
+            
+            // Add list view CSS
+            const style = document.createElement('style');
+            style.textContent = `
+                .list-view {
+                    grid-template-columns: 1fr !important;
+                }
+                
+                .list-view .event-card {
+                    display: flex;
+                    max-height: 250px;
+                }
+                
+                .list-view .event-image {
+                    width: 300px;
+                    height: auto;
+                }
+                
+                @media (max-width: 768px) {
+                    .list-view .event-card {
+                        flex-direction: column;
+                        max-height: none;
+                    }
+                    
+                    .list-view .event-image {
+                        width: 100%;
+                        height: 200px;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
